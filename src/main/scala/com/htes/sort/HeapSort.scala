@@ -31,7 +31,6 @@ object HeapSort {
 
   def sort(a : Array[Int]) : Unit = {
     buildMaxHeap(a)
-
   }
 
   def main(args: Array[String]): Unit = {
