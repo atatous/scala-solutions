@@ -1,6 +1,5 @@
 package com.htes.sort
 
-
 object HeapSort {
 
   def swap(a: Array[Int], i: Int, j: Int) {
@@ -39,4 +38,5 @@ object HeapSort {
     sort(a)
     println(s"[${a.deep.mkString(",")}]")
   }
+
 }
