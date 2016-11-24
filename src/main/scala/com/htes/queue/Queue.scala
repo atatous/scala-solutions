@@ -22,7 +22,7 @@ class Queue(size : Int) {
 
   def insert(t : Int) {
     if (!isFull) {
-      buff(tail) = t.asInstanceOf[Int];
+      buff(tail) = t
       tail = (tail + 1) % buff.length
     }
   }
