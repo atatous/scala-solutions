@@ -18,7 +18,7 @@ object HeapSort {
       largest = r
     if(i != largest) {
       swap(a, i, largest)
-      maxHeapify(a, largest)
+      maxHeapify(a, largest, max)
     }
   }
 
