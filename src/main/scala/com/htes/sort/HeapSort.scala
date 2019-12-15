@@ -8,13 +8,13 @@ object HeapSort {
     a(j) = temp
   }
 
-  def maxHeapify(a : Array[Int], i : Int) : Unit = {
+  def maxHeapify(a : Array[Int], i : Int, max : Int) : Unit = {
     val l = 2 * i + 1
     val r = l + 1
     var largest = i
-    if (l <  a.length && a(l) > a(i))
+    if (l <  max && a(l) > a(i))
       largest = l
-    if(r <  a.length && a(r) > a(largest))
+    if(r <  max && a(r) > a(largest))
       largest = r
     if(i != largest) {
       swap(a, i, largest)
@@ -24,12 +24,20 @@ object HeapSort {
 
   def buildMaxHeap(a : Array[Int]) : Unit = {
     for(i <- a.length /2 to 0 by -1){
-      maxHeapify(a, i)
+      maxHeapify(a, i, a.length)
     }
   }
 
   def sort(a : Array[Int]) : Unit = {
     buildMaxHeap(a)
+    
+    var lastElement = array.length - 1;
+    
+    while(lastElement > 0) {
+      swap(array, 0, lastElement);  
+      maxHeapify(array, 0, lastElement);
+      lastElement -= 1
+    }
   }
 
   def main(args: Array[String]): Unit = {
