@@ -2,16 +2,15 @@ package com.htes.sort
 
 object QuickSort2 extends App {
 
-  def qsort(a :IndexedSeq[Int]) :IndexedSeq[Int] = {
-    if(a.length < 2) {
-      a  // base case
-    } else {
-      val smaller = for (i <- (0 until a.length - 1) if (a(i) <= a(a.length - 1))) yield a(i)
-      val larger = for (i <- (0 until a.length - 1) if (a(i) > a(a.length - 1))) yield a(i)
-      qsort(smaller) ++ IndexedSeq(a(a.length-1)) ++ qsort(larger)
+  def qsort(a :Array[Int]) :Array[Int] = {
+    if(a.length < 2) a else {
+      val s = for (i <- a.take(a.length-1) if(i <= a(a.length - 1))) yield i
+      val l = for (i <- a.take(a.length-1) if(i > a(a.length - 1))) yield i
+      qsort(s) ++ Array(a(a.length-1)) ++ qsort(l)
     }
   }
 
-  val oneToFive = IndexedSeq(5, 3, 4, 1, 2, 12, 25, 0, 10)
-  println(qsort(oneToFive))
+  val array = Array(5, 3, 4, 1, 2, 12, 25, 0, 17,13, 15, 10)
+  println(array.mkString(","))
+  println(qsort(array).mkString(","))
 }
