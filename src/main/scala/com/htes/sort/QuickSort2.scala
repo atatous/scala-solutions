@@ -4,9 +4,10 @@ object QuickSort2 extends App {
 
   def qsort(a :Array[Int]) :Array[Int] = {
     if(a.length < 2) a else {
-      val s = for (i <- a.take(a.length-1) if(i <= a(a.length - 1))) yield i
-      val l = for (i <- a.take(a.length-1) if(i > a(a.length - 1))) yield i
-      qsort(s) ++ Array(a(a.length-1)) ++ qsort(l)
+      val p = a.length-1
+      val s = for (i <- a.take(p) if(i <= a(p))) yield i
+      val l = for (i <- a.take(p) if(i > a(p))) yield i
+      qsort(s) ++ Array(a(p)) ++ qsort(l)
     }
   }
 
