@@ -8,17 +8,15 @@ object HeapSort {
     a(j) = temp
   }
 
-  def maxHeapify(a : Array[Int], i : Int, max : Int) : Unit = {
+  def maxHeapify(a : Array[Int], i : Int, lastIndex : Int) : Unit = {
     val l = 2 * i + 1
-    val r = l + 1
+    val r = 2 * i + 2
     var largest = i
-    if (l <  max && a(l) > a(i))
-      largest = l
-    if(r <  max && a(r) > a(largest))
-      largest = r
+    if(l <  lastIndex && a(l) > a(largest)) largest = l
+    if(r <  lastIndex && a(r) > a(largest)) largest = r
     if(i != largest) {
       swap(a, i, largest)
-      maxHeapify(a, largest, max)
+      maxHeapify(a, largest, lastIndex)
     }
   }
 
@@ -30,21 +28,21 @@ object HeapSort {
 
   def sort(a : Array[Int]) : Unit = {
     buildMaxHeap(a)
-    
-    var lastElement = array.length - 1;
-    
-    while(lastElement > 0) {
-      swap(array, 0, lastElement);  
-      maxHeapify(array, 0, lastElement);
-      lastElement -= 1
+
+    var lastIndex = a.length - 1;
+
+    while(lastIndex > 0) {
+      swap(a, 0, lastIndex);
+      maxHeapify(a, 0, lastIndex);
+      lastIndex -= 1
     }
   }
 
   def main(args: Array[String]): Unit = {
     val a = Array(15, 7, 5, 4, 12)
-    println(s"[${a.deep.mkString(",")}]")
+    println(s"[${a.mkString(",")}]")
     sort(a)
-    println(s"[${a.deep.mkString(",")}]")
+    println(s"[${a.mkString(",")}]")
   }
 
 }
