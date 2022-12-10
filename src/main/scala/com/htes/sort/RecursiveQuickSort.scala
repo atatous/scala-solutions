@@ -5,7 +5,7 @@ object RecursiveQuickSort extends App {
   def qsort(a :Array[Int]) :Array[Int] = {
     if(a.length < 2) a else {
       val (s, l) = a.tail.partition(_ < a.head)
-      qsort(s) ++ Array(a(0)) ++ qsort(l)
+      qsort(s) ++ Array(a.head) ++ qsort(l)
     }
   }
 
