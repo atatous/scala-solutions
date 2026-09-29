@@ -2,7 +2,7 @@ package com.htes.sort
 
 object HeapSort {
 
-  def swap(a: Array[Int], i: Int, j: Int) {
+  def swap(a: Array[Int], i: Int, j: Int): Unit = {
     val temp: Int = a(i)
     a(i) = a(j)
     a(j) = temp

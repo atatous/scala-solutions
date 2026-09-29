@@ -20,7 +20,7 @@ class Queue(size : Int) {
 
   def isFull =  head == (tail + 1) % buff.length
 
-  def insert(t : Int) {
+  def insert(t : Int): Unit = {
     if (!isFull) {
       buff(tail) = t
       tail = (tail + 1) % buff.length
@@ -37,7 +37,7 @@ class Queue(size : Int) {
     num
   }
 
-  def display {
+  def display: Unit = {
     System.out.print("head=" + head + ", tail=" + tail + "\nBuffer : ");
     for (i <- head until tail) {
       print(s"${buff(i)}, ");
